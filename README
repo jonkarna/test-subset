@@ -1,0 +1,25 @@
+Construct subsets of your tests
+
+    TestSubset::Task.new("foo") do |test|
+      test.units "foo/*"
+      test.functionals "foo/*", "bar/*", "*{foo,bar}*"
+      test.integration "foo/*"
+    end
+
+Execute them like so
+
+    rake test:foo:units       # just units
+    rake test:foo:functionals # just functionals
+    rake test:foo:integration # just integration
+    rake test:foo             # all
+
+And some additional tasks
+
+    rake test:foo:units_and_functionals
+    rake test:foo:functionals_and_units
+
+    rake test:foo:units_and_integration
+    rake test:foo:integration_and_units
+
+    rake test:foo:functionals_and_integration
+    rake test:foo:integration_and_functionals
